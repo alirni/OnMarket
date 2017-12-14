@@ -10,9 +10,10 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
 
-<dom-module id="on-market">
+<link rel="import" href="onmarket-icon.html">
+
+<dom-module id="onmarket-app">
   <template>
     <style>
       :host {
@@ -71,7 +72,7 @@
 
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+            <paper-icon-button icon="onmarket-icon:menu" drawer-toggle></paper-icon-button>
             <div main-title>My App</div>
           </app-toolbar>
         </app-header>
@@ -92,7 +93,7 @@
 
   <script>
     Polymer({
-      is: 'on-market',
+      is: 'onmarket-app',
 
       properties: {
         page: {
