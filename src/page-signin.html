@@ -108,7 +108,7 @@
         <paper-progress indeterminate="[[progress]]" fast></paper-progress>
         <div class="form-container">
           <div class="logo">
-            <iron-image id="logo" on-tap="_imageTap"></iron-image>
+            <iron-image id="logo"></iron-image>
           </div>
           <paper-input id="userInput" label="نام کاربری" type="text" value="{{_username}}" required autofocus></paper-input>
           <paper-input id="passInput" label="کلمه عبور" type="password" value="{{_password}}" required></paper-input>
@@ -201,29 +201,6 @@
                 remember: this._remember
               }
             }));
-          }
-        },
-
-        _imageTap: function () {
-          this._imageTapCount++;
-
-          if (this._imageTapCount >= 4) {
-            try {
-              this._imageTapCount = 0;
-              const apiUrl = prompt('Enter new Api url or cancel to set default.', Lava.config.apiUrl);
-              if (apiUrl) {
-                localStorage.setItem('apiDevUrl', apiUrl);
-              }
-              else {
-                localStorage.removeItem('apiDevUrl');
-              }
-            }
-            catch (error) {
-              this._warn('page-signin change api error: %o', error);
-            }
-            finally {
-              location.reload();
-            }
           }
         },
       });
