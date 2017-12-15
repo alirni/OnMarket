@@ -17,6 +17,7 @@
 <link rel="import" href="page-product.html">
 <link rel="import" href="page-404.html">
 <link rel="import" href="onmarket-style.html">
+<link rel="import" href="onmarket-menu.html">
 
 <dom-module id="onmarket-app">
   <template>
@@ -66,11 +67,7 @@
       <!-- Drawer content -->
       <app-drawer slot="drawer" align="start" id="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="product" href="[[rootPath]]product">محصولات</a>
-          <a name="cart" href="[[rootPath]]cart">سبد خرید</a>
-          <a name="signin" href="[[rootPath]]signin">ورود</a>
-        </iron-selector>
+        <onmarket-menu root-path="[[rootPath]]"></onmarket-menu>
       </app-drawer>
 
       <!-- Main content -->
