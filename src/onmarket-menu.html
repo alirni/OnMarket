@@ -1,0 +1,103 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html" />
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html" />
+<link rel="import" href="../bower_components/paper-styles/typography.html" />
+<link rel="import" href="../bower_components/paper-styles/shadow.html" />
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html" />
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="../bower_components/iron-meta/iron-meta.html" />
+
+<dom-module id="onmarket-menu">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        @apply --paper-font-menu;
+        padding-top: 0.6154em;
+        padding-bottom: 0.6154em;
+        margin: 0.5em 1em;
+        border-radius: 3px;
+      }
+
+      a iron-icon {
+        margin-right: 1.5em;
+        margin-left : 1.75em;
+        color: var(--app-primary-icon-color);
+      }
+
+      a.iron-selected,
+      a.iron-selected iron-icon {
+        font-weight: bold;
+        color: var(--app-primary-light-text-color);
+        background-color: var(--app-primary-color);
+      }
+
+      a.iron-selected {
+        @apply --shadow-elevation-2dp;
+      }
+
+      a:hover:not(.iron-selected) {
+        background-color: rgba(120, 144, 156, 0.3);
+      }
+
+      paper-ripple {
+        color: var(--paper-blue-200);
+      }
+    </style>
+    <iron-ajax url="../onmarket-data/onmarket-menu.json" last-response="{{menuArr}}" auto></iron-ajax>
+    <iron-meta key="menu" value="{{menuArr}}"></iron-meta>
+
+    <iron-selector selected="[[selected]]" attr-for-selected="name" role="navigation"></iron-selector>
+      <template is="dom-repeat" items="[[menuArr]]" as="menu">
+        <a name$="[[menu.name]]" href$="[[rootPath]][[menu.href]]">
+          <iron-icon icon="onmarket:[[menu.icon]]"></iron-icon>
+          [[menu.title]]
+          <paper-ripple></paper-ripple>
+        </a>
+      </template>
+    </iron-selector>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+      Polymer({
+        is: 'onmarket-menu',
+
+        properties: {
+
+          selected: {
+            type: String,
+          },
+
+          name: {
+            type: String,
+          },
+
+          href: {
+            type: String,
+          },
+
+          icon: {
+            type: String,
+          },
+
+          title: {
+            type: String,
+          },
+
+          rootPath: {
+            type: String,
+          }
+        },
+      });
+    })();
+  </script>
+</dom-module>
