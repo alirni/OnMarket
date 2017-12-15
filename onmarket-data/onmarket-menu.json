@@ -1,0 +1,20 @@
+[
+  {
+    "name": "product",
+    "href": "product",
+    "icon": "menu",
+    "title": "محصولات"
+  },
+  {
+    "name": "cart",
+    "href": "cart",
+    "icon": "cart",
+    "title": "سبد خرید"
+  },
+  {
+    "name": "signin",
+    "href": "signin",
+    "icon": "signin",
+    "title": "ورود"
+  }
+]
