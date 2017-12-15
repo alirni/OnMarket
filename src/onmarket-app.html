@@ -13,7 +13,7 @@
 
 <link rel="import" href="onmarket-icon.html">
 <link rel="import" href="page-cart.html">
-<link rel="import" href="page-login.html">
+<link rel="import" href="page-signin.html">
 <link rel="import" href="page-product.html">
 <link rel="import" href="page-404.html">
 <link rel="import" href="onmarket-style.html">
@@ -23,6 +23,10 @@
     <style include="onmarket-style">
       :host {
         display: block;
+        @apply --paper-font-common-base;
+        color: var(--app-primary-text-color);
+
+        --app-drawer-width: 13.75em;
       }
 
       app-header {
@@ -58,14 +62,14 @@
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <app-drawer-layout fullbleed narrow="{{narrow}}">
+    <app-drawer-layout responsive-width="1000px" fullbleed narrow="{{narrow}}">
       <!-- Drawer content -->
-      <app-drawer id="drawer" swipe-open="[[narrow]]">
+      <app-drawer slot="drawer" align="start" id="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="cart" href="[[rootPath]]cart">cart</a>
-          <a name="login" href="[[rootPath]]login">login</a>
-          <a name="product" href="[[rootPath]]product">product</a>
+          <a name="product" href="[[rootPath]]product">محصولات</a>
+          <a name="cart" href="[[rootPath]]cart">سبد خرید</a>
+          <a name="signin" href="[[rootPath]]signin">ورود</a>
         </iron-selector>
       </app-drawer>
 
@@ -75,7 +79,7 @@
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="onmarket-icon:menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div main-title>On-Market</div>
           </app-toolbar>
         </app-header>
 
@@ -85,7 +89,7 @@
             fallback-selection="404"
             role="main">
           <page-cart name="cart"></page-cart>
-          <page-login name="login"></page-login>
+          <page-signin name="signin"></page-signin>
           <page-product name="product"></page-product>
           <page-404 name="404"></page-404>
         </iron-pages>
