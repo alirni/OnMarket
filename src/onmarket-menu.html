@@ -4,8 +4,8 @@
 <link rel="import" href="../bower_components/paper-styles/typography.html" />
 <link rel="import" href="../bower_components/paper-styles/shadow.html" />
 <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html" />
-<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
-<link rel="import" href="../bower_components/iron-meta/iron-meta.html" />
+
+<link rel="import" href="onmarket-config.html" />
 
 <dom-module id="onmarket-menu">
   <template>
@@ -51,11 +51,9 @@
         color: var(--paper-blue-200);
       }
     </style>
-    <iron-ajax url="../onmarket-data/onmarket-menu.json" last-response="{{menuArr}}" auto></iron-ajax>
-    <iron-meta key="menu" value="{{menuArr}}"></iron-meta>
 
     <iron-selector selected="[[selected]]" attr-for-selected="name" role="navigation"></iron-selector>
-      <template is="dom-repeat" items="[[menuArr]]" as="menu">
+      <template is="dom-repeat" items="{{menuArr}}" as="menu">
         <a name$="[[menu.name]]" href$="[[rootPath]][[menu.href]]">
           <iron-icon icon="onmarket:[[menu.icon]]"></iron-icon>
           [[menu.title]]
@@ -72,6 +70,18 @@
         is: 'onmarket-menu',
 
         properties: {
+
+          menuArr: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.menu;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
 
           selected: {
             type: String,
