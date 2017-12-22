@@ -2,7 +2,7 @@
   {
     "name": "product",
     "href": "product",
-    "icon": "menu",
+    "icon": "product",
     "title": "محصولات"
   },
   {
@@ -10,6 +10,12 @@
     "href": "cart",
     "icon": "cart",
     "title": "سبد خرید"
+  },
+  {
+    "name": "game",
+    "href": "game",
+    "icon": "game",
+    "title": "بازی"
   },
   {
     "name": "signin",
