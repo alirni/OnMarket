@@ -10,6 +10,8 @@
 <link rel="import" href="../bower_components/iron-a11y-keys/iron-a11y-keys.html" />
 <link rel="import" href="../bower_components/paper-progress/paper-progress.html" />
 
+<link rel="import" href="onmarket-config.html">
+
 <dom-module id="page-signin">
   <template>
     <style>
@@ -150,6 +152,18 @@
             type: Boolean,
             value: false
           },
+
+          signin: {
+            type: Object,
+            value: function() {
+              try {
+                return onmarket.signin;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          }
         },
 
         attached: function () {
@@ -167,7 +181,7 @@
         },
 
         _focusPassInput: function () {
-          // this._log('page-signin _focusPassInput');
+          this._log('page-signin _focusPassInput');
           this.async(() => {
             if (this.$.userInput.validate()) {
               this.$.passInput.inputElement.focus();
@@ -185,7 +199,7 @@
         },
 
         _signin: function () {
-          // this._log('page-signin _signin');
+          this._log('page-signin _signin');
           if (this.progress) return;
           let isValid = true;
           Polymer.dom(this.root).querySelectorAll('paper-input').forEach((paperInput) => {
@@ -194,13 +208,15 @@
             }
           });
           if (isValid) {
-            document.dispatchEvent(new CustomEvent('lava-signin', {
-              detail: {
-                username: this._username,
-                password: this._password,
-                remember: this._remember
+            if (this.signin) {
+              const __username = this.signin.username;
+              const __password = this.signin.password;
+
+              if (__username === this._username && __password === this._password) {
+                this._log('signin');
+                location.href = onmarket.menu[1].name;
               }
-            }));
+            }
           }
         },
       });
