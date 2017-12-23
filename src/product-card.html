@@ -35,14 +35,20 @@
       }
 
       .product-image {
-        width: 200px;
+        width: 230px;
+        height: 230px;
+      }
+
+      iron-image {
+        width: 230px;
+        height: 230px;
       }
     </style>
 
 
     <paper-material elevation="1">
       <div class="product-image">
-        <iron-image src="[[productImagePath]]" preload sizing="cover"></iron-image>
+        <iron-image src="[[productImagePath]]" sizing="contain"></iron-image>
       </div>
       <div class="product-cart">
         <div class="product-name">[[productName]]</div>
