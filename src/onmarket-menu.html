@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html" />
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html" />
 <link rel="import" href="../bower_components/paper-styles/typography.html" />
@@ -52,7 +52,7 @@
       }
     </style>
 
-    <iron-selector selected="[[selected]]" attr-for-selected="name" role="navigation"></iron-selector>
+    <iron-selector selected="[[selected]]" attr-for-selected="name" role="navigation">
       <template is="dom-repeat" items="{{menuArr}}" as="menu">
         <a name$="[[menu.name]]" href$="[[rootPath]][[menu.href]]">
           <iron-icon icon="onmarket:[[menu.icon]]"></iron-icon>
