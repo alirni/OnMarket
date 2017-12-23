@@ -1,19 +1,34 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
 
 <link rel="import" href="product-card.html" />
+<link rel="import" href="onmarket-config.html" />
 
 <dom-module id="page-rice">
   <template>
     <style>
       :host {
-        display: block;
+        @apply --layout-vertical;
+        padding: 10px;
+      }
+
+      .container {
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+        /* @apply --layout-center-center; */
+        @apply --layout-around-justified;
       }
     </style>
 
-    <template is="dom-repeat" items="{{array}}" as="item">
-      <!-- {{item}} and {{index}} can be used in this binding scope -->
-      <product-card product-name="[[test]]" product-price="[[test]]" product-image-path="[[test]]"></product-card>
-    </template>
+    <div class="container">
+      <template is="dom-repeat" items="{{productArr}}" as="product">
+        <product-card
+          product-name="[[product.name]]"
+          product-price="[[product.price]]"
+          product-image-path="../images/product/rice/[[product.image]].png">
+        </product-card>
+      </template>
+    </div>
 
   </template>
 
@@ -23,6 +38,21 @@
 
       Polymer({
         is: 'page-rice',
+
+        properties: {
+
+          productArr: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.product.rice;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+        },
       });
     })();
   </script>
