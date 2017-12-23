@@ -38,21 +38,85 @@
   onmarket.product = {
     rice: [
       {
-        name: 'احمد',
-        image: 'ahmad',
+        name: 'برنج آوازه',
+        image: 'avaze',
         weight: 10,
         price: 60000,
         count: 100,
         description: 'برنج اعلا و درجه یک'
       },
       {
-        name: 'محسن',
+        name: 'برنج محسن',
         image: 'mohsen',
         weight: 10,
         price: 80000,
         count: 50,
         description: 'برنج اعلا و درجه یک'
       },
+      {
+        name: 'برنج مژده',
+        image: 'mozhdeh',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج طبیعت',
+        image: 'tabiat',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج هایلی',
+        image: 'haily',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج کاکا',
+        image: 'kaka',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج کلات',
+        image: 'kalat',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج ارکیده',
+        image: 'orkide',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج پردیس',
+        image: 'pardis',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج ذبیح',
+        image: 'zabih',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      }
     ],
     Paste: [
       {
