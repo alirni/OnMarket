@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<link rel="import" href="product-card.html" />
+
+<dom-module id="page-rice">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <template is="dom-repeat" items="{{array}}" as="item">
+      <!-- {{item}} and {{index}} can be used in this binding scope -->
+      <product-card product-name="[[test]]" product-price="[[test]]" product-image-path="[[test]]"></product-card>
+    </template>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'page-rice',
+      });
+    })();
+  </script>
+</dom-module>
