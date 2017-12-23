@@ -16,10 +16,10 @@
       "title": "ورود"
     },
     {
-      "name": "product",
-      "href": "product",
-      "icon": "product",
-      "title": "محصولات"
+      "name": "rice",
+      "href": "rice",
+      "icon": "rice",
+      "title": "برنج"
     },
     {
       "name": "cart",
