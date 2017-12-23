@@ -1,0 +1,80 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-material/paper-material.html" />
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
+<link rel="import" href="../bower_components/iron-image/iron-image.html" />
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="product-card">
+  <template>
+    <style>
+      :host {
+        @apply --layout-vertical;
+
+        --paper-tabs: {
+          border-radius: 5px;
+        };
+        --paper-tabs-selection-bar: {
+          height: 2px;
+        };
+        --paper-tabs-selection-bar-color: var(--app-secondary-color);
+        --paper-tab-ink: var(--app-secondary-color);
+        --paper-tab-content: {
+          color: var(--app-secondary-color);
+        };
+        --paper-tab-content-unselected: {
+          color: var(--app-primary-text-color);
+        };
+      }
+
+      paper-material {
+        @apply --layout-flex-auto; /* as a child make height 100% */
+        @apply --layout-vertical; /* as a parent make new layout */
+        border-radius:    5px;
+        background-color: var(--app-primary-background-color);
+        margin: 0.5em;
+      }
+
+      .product-image {
+        width: 200px;
+      }
+    </style>
+
+
+    <paper-material elevation="1">
+      <div class="product-image">
+        <iron-image src="[[productImagePath]]" preload sizing="cover"></iron-image>
+      </div>
+      <div class="product-cart">
+        <div class="product-name">[[productName]]</div>
+        <div class="product-price">[[productPrice]]</div>
+        <paper-button>خرید</paper-button>
+      </div>
+    </paper-material>
+
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'product-card',
+
+        propertise: {
+          productName: {
+            type: String,
+          },
+
+          productPrice: {
+            type: String,
+          },
+
+          productImagePath: {
+            type: String,
+          }
+        },
+      });
+    })();
+  </script>
+</dom-module>
