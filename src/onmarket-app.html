@@ -270,77 +270,80 @@
   </template>
 
   <script>
-    Polymer({
-      is: 'onmarket-app',
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'onmarket-app',
 
-      properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged',
+        properties: {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+
+          homePage: {
+            type: String,
+            value: function () {
+              try {
+                return onmarket.menu[0].name;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+
+          rootPath: {
+            type: String,
+          }
         },
 
-        homePage: {
-          type: String,
-          value: function () {
-            try {
-              return onmarket.menu[0].name;
+        observers: [
+          // '_routePageChanged(routeData.page)',
+          '_routeChanged(route.path)'
+        ],
+
+        // _routePageChanged: function(page) {
+        //   this.page = page || 'cart';
+
+        //   if (!this.$.drawer.persistent) {
+        //     this.$.drawer.close();
+        //   }
+        // },
+
+        _routeChanged: function (path) {
+          this.debounce('_routeChanged', () => {
+            // use debounce to prevent duplicate call and ensure to routeData is updated.
+            if (path.substr(-1) != '/') {
+              // routeData.page not valid
+              this.set('route.path', path + '/');
             }
-            catch (err) {
-              this._warn(err);
+            else if (path === '/') {
+              // routeData not valid
+              this.menu = this.page = this.homePage;
             }
-          }
+            else {
+              this.menu = this.routeData.menu || this.homePage;
+              this.page = this.routeData.page || this.menu;
+            }
+
+            if (!this.$.drawer.persistent && this.$.drawer.opened) {
+              this.$.drawer.opened = false;
+            }
+          }, 10);
         },
 
-        rootPath: {
-          type: String,
-        }
-      },
+        _pageChanged: function (page) {
+          // Load page import on demand. Show 404 page if fails
+          var resolvedPageUrl = this.resolveUrl('page-' + page + '.html');
+          this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        },
 
-      observers: [
-        // '_routePageChanged(routeData.page)',
-        '_routeChanged(route.path)'
-      ],
-
-      // _routePageChanged: function(page) {
-      //   this.page = page || 'cart';
-
-      //   if (!this.$.drawer.persistent) {
-      //     this.$.drawer.close();
-      //   }
-      // },
-
-      _routeChanged: function (path) {
-        this.debounce('_routeChanged', () => {
-          // use debounce to prevent duplicate call and ensure to routeData is updated.
-          if (path.substr(-1) != '/') {
-            // routeData.page not valid
-            this.set('route.path', path + '/');
-          }
-          else if (path === '/') {
-            // routeData not valid
-            this.menu = this.page = this.homePage;
-          }
-          else {
-            this.menu = this.routeData.menu || this.homePage;
-            this.page = this.routeData.page || this.menu;
-          }
-
-          if (!this.$.drawer.persistent && this.$.drawer.opened) {
-            this.$.drawer.opened = false;
-          }
-        }, 10);
-      },
-
-      _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('page-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
-
-      _showPage404: function() {
-        this.page = '404';
-      },
-    });
+        _showPage404: function () {
+          this.page = '404';
+        },
+      });
+    })();
   </script>
 </dom-module>
