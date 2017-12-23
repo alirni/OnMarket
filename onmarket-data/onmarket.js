@@ -35,5 +35,44 @@
     }
   ];
 
+  onmarket.product = {
+    rice: [
+      {
+        name: 'احمد',
+        image: 'ahmad',
+        weight: 10,
+        price: 60000,
+        count: 100,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'محسن',
+        image: 'mohsen',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+    ],
+    Paste: [
+      {
+        name: 'چین چین',
+        image: 'chinchin',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'تبرک',
+        image: 'tabarok',
+        weight: 0.7,
+        price: 1500,
+        count: 100,
+        description: 'رب ایرانی'
+      }
+    ]
+  }
+
   console.log('config/config init');
 })();
