@@ -116,7 +116,23 @@
         price: 80000,
         count: 50,
         description: 'برنج اعلا و درجه یک'
-      }
+      },
+      {
+        name: 'برنج ارکیده',
+        image: 'orkide',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
+      {
+        name: 'برنج ارکیده',
+        image: 'orkide',
+        weight: 10,
+        price: 80000,
+        count: 50,
+        description: 'برنج اعلا و درجه یک'
+      },
     ],
     Paste: [
       {
