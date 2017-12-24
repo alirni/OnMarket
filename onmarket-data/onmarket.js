@@ -22,6 +22,12 @@
       "title": "برنج"
     },
     {
+      "name": "paste",
+      "href": "paste",
+      "icon": "paste",
+      "title": "رب"
+    },
+    {
       "name": "cart",
       "href": "cart",
       "icon": "cart",
@@ -134,12 +140,92 @@
         description: 'برنج اعلا و درجه یک'
       },
     ],
-    Paste: [
+    paste: [
+      {
+        name: 'طبیعت',
+        image: 'tabiat',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
       {
         name: 'چین چین',
         image: 'chinchin',
         weight: 0.7,
         price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'ورامین',
+        image: 'varamin',
+        weight: 0.7,
+        price: 1500,
+        count: 100,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'شاداب',
+        image: 'shadab',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'رعنا',
+        image: 'rana',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'محسن',
+        image: 'mohsen',
+        weight: 0.7,
+        price: 1800,
+        count: 100,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'فامیلا',
+        image: 'famila',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'دلپذیر',
+        image: 'delpazir',
+        weight: 0.7,
+        price: 1600,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'دلند',
+        image: 'daland',
+        weight: 0.7,
+        price: 1600,
+        count: 100,
+        description: 'رب ارگانیک'
+      },
+      {
+        name: 'طبیعت',
+        image: 'tabiat',
+        weight: 0.7,
+        price: 1300,
+        count: 200,
+        description: 'رب ایرانی'
+      },
+      {
+        name: 'چین چین',
+        image: 'chinchin',
+        weight: 0.7,
+        price: 1400,
         count: 200,
         description: 'رب ایرانی'
       },
