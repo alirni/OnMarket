@@ -4,7 +4,7 @@
 <link rel="import" href="product-card.html" />
 <link rel="import" href="onmarket-config.html" />
 
-<dom-module id="page-rice">
+<dom-module id="page-product">
   <template>
     <style>
       :host {
@@ -15,7 +15,6 @@
       .container {
         @apply --layout-horizontal;
         @apply --layout-wrap;
-        /* @apply --layout-center-center; */
         @apply --layout-around-justified;
       }
     </style>
@@ -23,9 +22,10 @@
     <div class="container">
       <template is="dom-repeat" items="{{productArr}}" as="product">
         <product-card
+          product-id="[[product.productId]]"
           product-name="[[product.name]]"
           product-price="[[product.price]]"
-          product-image-path="../images/product/rice/[[product.image]].png">
+          product-image-path="../images/product/[[product.image]].png">
         </product-card>
       </template>
     </div>
@@ -37,7 +37,7 @@
       'use strict';
 
       Polymer({
-        is: 'page-rice',
+        is: 'page-product',
 
         properties: {
 
@@ -45,7 +45,7 @@
             type: Array,
             value: function () {
               try {
-                return onmarket.product.rice;
+                return onmarket.product;
               }
               catch (err) {
                 this._warn(err);
