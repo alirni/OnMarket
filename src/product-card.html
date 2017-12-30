@@ -74,7 +74,7 @@
           <div class="product-price">[[productPrice]]</div>
         </div>
         <div class="btn-container">
-          <paper-button>
+          <paper-button on-tap="addToCart">
             <iron-icon icon="onmarket:cart"></iron-icon>
             خرید
           </paper-button>
@@ -93,6 +93,10 @@
         is: 'product-card',
 
         propertise: {
+          productId: {
+            type: Number,
+          },
+
           productName: {
             type: String,
           },
@@ -103,8 +107,13 @@
 
           productImagePath: {
             type: String,
-          }
+          },
         },
+
+        addToCart: function() {
+          this._log('<%s> addToCart productId: ', this.is, this.productId);
+          this.fire('addToCart', this.productId);
+        }
       });
     })();
   </script>
