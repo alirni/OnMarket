@@ -16,8 +16,7 @@
 <link rel="import" href="page-cart.html" />
 <link rel="import" href="page-game.html" />
 <link rel="import" href="page-signin.html" />
-<link rel="import" href="page-rice.html" />
-<link rel="import" href="page-paste.html" />
+<link rel="import" href="page-product.html" />
 <link rel="import" href="page-404.html" />
 <link rel="import" href="onmarket-style.html" />
 <link rel="import" href="onmarket-menu.html" />
@@ -260,8 +259,7 @@
             attr-for-selected="name"
             fallback-selection="404"
             role="main">
-          <page-rice name="rice"></page-rice>
-          <page-paste name="paste"></page-paste>
+          <page-product name="product"></page-product>
           <page-cart name="cart"></page-cart>
           <page-game name="game"></page-game>
           <page-signin name="signin"></page-signin>
@@ -298,7 +296,23 @@
 
           rootPath: {
             type: String,
+          },
+
+          cartContainer: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.cart;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
           }
+        },
+
+        listeners: {
+          'addToCart': '_addToCart'
         },
 
         observers: [
@@ -344,6 +358,12 @@
 
         _showPage404: function () {
           this.page = '404';
+        },
+
+        _addToCart: function (_, id) {
+          console.log('<%s> _addToCart id: %s', this.is, id);
+          this.cartContainer.push(id);
+          console.log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
         },
       });
     })();
