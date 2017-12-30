@@ -16,16 +16,10 @@
       "title": "ورود"
     },
     {
-      "name": "rice",
-      "href": "rice",
-      "icon": "rice",
-      "title": "برنج"
-    },
-    {
-      "name": "paste",
-      "href": "paste",
-      "icon": "paste",
-      "title": "رب"
+      "name": "product",
+      "href": "product",
+      "icon": "product",
+      "title": "محصولات"
     },
     {
       "name": "cart",
@@ -41,204 +35,226 @@
     }
   ];
 
-  onmarket.product = {
-    rice: [
-      {
-        name: 'برنج آوازه',
-        image: 'avaze',
-        weight: 10,
-        price: 60000,
-        count: 100,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج محسن',
-        image: 'mohsen',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج مژده',
-        image: 'mozhdeh',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج طبیعت',
-        image: 'tabiat',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج هایلی',
-        image: 'haily',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج کاکا',
-        image: 'kaka',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج کلات',
-        image: 'kalat',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج ارکیده',
-        image: 'orkide',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج پردیس',
-        image: 'pardis',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج ذبیح',
-        image: 'zabih',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج ارکیده',
-        image: 'orkide',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-      {
-        name: 'برنج ارکیده',
-        image: 'orkide',
-        weight: 10,
-        price: 80000,
-        count: 50,
-        description: 'برنج اعلا و درجه یک'
-      },
-    ],
-    paste: [
-      {
-        name: 'طبیعت',
-        image: 'tabiat',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'چین چین',
-        image: 'chinchin',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'ورامین',
-        image: 'varamin',
-        weight: 0.7,
-        price: 1500,
-        count: 100,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'شاداب',
-        image: 'shadab',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'رعنا',
-        image: 'rana',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'محسن',
-        image: 'mohsen',
-        weight: 0.7,
-        price: 1800,
-        count: 100,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'فامیلا',
-        image: 'famila',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'دلپذیر',
-        image: 'delpazir',
-        weight: 0.7,
-        price: 1600,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'دلند',
-        image: 'daland',
-        weight: 0.7,
-        price: 1600,
-        count: 100,
-        description: 'رب ارگانیک'
-      },
-      {
-        name: 'طبیعت',
-        image: 'tabiat',
-        weight: 0.7,
-        price: 1300,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'چین چین',
-        image: 'chinchin',
-        weight: 0.7,
-        price: 1400,
-        count: 200,
-        description: 'رب ایرانی'
-      },
-      {
-        name: 'تبرک',
-        image: 'tabarok',
-        weight: 0.7,
-        price: 1500,
-        count: 100,
-        description: 'رب ایرانی'
-      }
-    ]
-  }
+  onmarket.cart = [],
+
+  onmarket.product = [
+    {
+      productId: 1,
+      name: 'برنج آوازه',
+      image: 'avaze',
+      weight: 10,
+      price: 60000,
+      count: 100,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 2,
+      name: 'برنج محسن',
+      image: 'rice-mohsen',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 3,
+      name: 'برنج مژده',
+      image: 'mozhdeh',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 4,
+      name: 'برنج طبیعت',
+      image: 'rice-tabiat',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 5,
+      name: 'برنج هایلی',
+      image: 'haily',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 6,
+      name: 'برنج کاکا',
+      image: 'kaka',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 7,
+      name: 'برنج کلات',
+      image: 'kalat',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 8,
+      name: 'برنج ارکیده',
+      image: 'orkide',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 9,
+      name: 'برنج پردیس',
+      image: 'pardis',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 10,
+      name: 'برنج ذبیح',
+      image: 'zabih',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 11,
+      name: 'برنج ارکیده',
+      image: 'orkide',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 12,
+      name: 'برنج ارکیده',
+      image: 'orkide',
+      weight: 10,
+      price: 80000,
+      count: 50,
+      description: 'برنج اعلا و درجه یک'
+    },
+    {
+      productId: 13,
+      name: 'طبیعت',
+      image: 'tabiat',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 14,
+      name: 'چین چین',
+      image: 'chinchin',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 15,
+      name: 'ورامین',
+      image: 'varamin',
+      weight: 0.7,
+      price: 1500,
+      count: 100,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 16,
+      name: 'شاداب',
+      image: 'shadab',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 17,
+      name: 'رعنا',
+      image: 'rana',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 18,
+      name: 'محسن',
+      image: 'mohsen',
+      weight: 0.7,
+      price: 1800,
+      count: 100,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 19,
+      name: 'فامیلا',
+      image: 'famila',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 20,
+      name: 'دلپذیر',
+      image: 'delpazir',
+      weight: 0.7,
+      price: 1600,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 21,
+      name: 'دلند',
+      image: 'daland',
+      weight: 0.7,
+      price: 1600,
+      count: 100,
+      description: 'رب ارگانیک'
+    },
+    {
+      productId: 22,
+      name: 'طبیعت',
+      image: 'tabiat',
+      weight: 0.7,
+      price: 1300,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 23,
+      name: 'چین چین',
+      image: 'chinchin',
+      weight: 0.7,
+      price: 1400,
+      count: 200,
+      description: 'رب ایرانی'
+    },
+    {
+      productId: 24,
+      name: 'تبرک',
+      image: 'tabarok',
+      weight: 0.7,
+      price: 1500,
+      count: 100,
+      description: 'رب ایرانی'
+    }
+  ];
 
   console.log('config/config init');
 })();
