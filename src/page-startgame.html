@@ -1,0 +1,63 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-material/paper-material.html" />
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
+<link rel="import" href="../bower_components/paper-button/paper-button.html" />
+
+<link rel="import" href="onmarket-style.html" />
+
+<dom-module id="page-startgame">
+  <template>
+    <style>
+      :host {
+        @apply --layout-vertical;
+      }
+
+      paper-material {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+        background-color: var(--app-primary-background-color);
+        border-radius: 5px;
+        padding: 1em;
+        margin: 2em;
+      }
+
+      paper-button {
+        --paper-button: {
+          background-color: var(--app-primary-color);
+          color: var(--app-primary-light-text-color);
+        }
+      }
+    </style>
+
+    <paper-material elevation="1">
+      <div class="container">
+        <div class="rols">
+          <ul>
+            <li><span>1</span></li>
+            <li><span>2</span></li>
+            <li><span>3</span></li>
+            <li><span>4</span></li>
+            <li><span>5</span></li>
+            <li><span>6</span></li>
+          </ul>
+        </div>
+        <paper-button on-tap="startGame" raised>شروع</paper-button>
+      </div>
+    </paper-material>
+    <a id="startGame" hidden></a>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'page-startgame',
+
+      propertis: {
+      },
+
+      startGame: function () {
+        this.$.startGame.href = '/game';
+        this.$.startGame.click();
+      }
+    });
+  </script>
+</dom-module>
