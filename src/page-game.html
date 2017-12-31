@@ -1,21 +1,68 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-material/paper-material.html" />
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
+
+<link rel="import" href="onmarket-style.html" />
 
 <dom-module id="page-game">
   <template>
     <style>
       :host {
-        display: block;
+        @apply --layout-horizontal;
+      }
 
-        padding: 10px 20px;
+      paper-material {
+        @apply --layout-fit;
+        background-color: var(--app-primary-background-color);
+        border-radius: 5px;
+        padding: 1em;
+        margin: 2em;
+      }
+
+      .circle {
+        box-sizing: border-box;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        background-color: var(--app-game-circle);
+        border: 5px solid var(--app-game-circle-border);
+        @apply --shadow-elevation-4dp;
+        position: absolute;
+        transition: all 500ms;
       }
     </style>
 
-    page-game
+    <paper-material elevation="1">
+      <div class="circle" id="circle" on-mousemove="move" on-tap="win"></div>
+    </paper-material>
+
   </template>
 
   <script>
     Polymer({
       is: 'page-game',
+
+      win: function () {
+        alert("You Win");
+      },
+
+      getRandom: function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      },
+
+      moveObj: function () {
+        var x = getRandom(0, 600);
+        var y = getRandom(0, 500);
+        element.style.left = x + 'px';
+        element.style.top = y + 'px';
+      },
+
+      move: function () {
+        let x = this.getRandom(0, 1200);
+        let y = this.getRandom(0, 700);
+        this.$.circle.style.left = x + 'px';
+        this.$.circle.style.top = y + 'px';
+      },
     });
   </script>
 </dom-module>
