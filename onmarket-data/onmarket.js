@@ -29,7 +29,7 @@
     },
     {
       "name": "game",
-      "href": "game",
+      "href": "startgame",
       "icon": "game",
       "title": "بازی"
     }
