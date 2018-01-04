@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/paper-material/paper-material.html" />
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
+<link rel="import" href="../bower_components/paper-styles/typography.html" />
 
 <link rel="import" href="onmarket-style.html" />
 
@@ -20,19 +21,42 @@
       }
 
       .circle {
-        box-sizing: border-box;
+        background-image: url('../images/ball.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 80px;
         height: 80px;
         border-radius: 40px;
         background-color: var(--app-game-circle);
-        border: 5px solid var(--app-game-circle-border);
         @apply --shadow-elevation-4dp;
         position: absolute;
-        transition: all 500ms;
+        transition: all 700ms;
+      }
+
+      .container {
+        @apply --layout-horizontal;
+        @apply --layout-justified;
+      }
+
+      .score {
+        @apply --paper-font-display1;
+        color: var(--app-time-game);
+        user-select: none;
+      }
+
+      #time {
+        @apply --paper-font-display4;
+        color: var(--app-time-game);
+        user-select: none;
       }
     </style>
 
     <paper-material elevation="1">
+      <div class="container">
+        <div class="score">امتیاز: <span id="score"></span></div>
+        <div id="time">01:00</div>
+      </div>
       <div class="circle" id="circle" on-mousemove="move" on-tap="win"></div>
     </paper-material>
 
@@ -42,24 +66,64 @@
     Polymer({
       is: 'page-game',
 
-      win: function () {
-        alert("You Win");
+      properties: {
+        score: {
+          type: Number,
+        },
+
+        startTime: {
+          type: Boolean,
+        }
+      },
+
+      observers: [
+        '_startGame(startTime)'
+      ],
+
+      ready: function () {
+        this.score = 0;
+      },
+
+      _startGame: function () {
+        const _timer = this.$.time;
+        let time = 9;
+        this._setInterval = setInterval(() => {
+          if (time != 0) {
+            // this._log('time: %s', time);
+            _timer.innerHTML = '00:' + --time;
+          }
+          else {
+            _timer.style.fontSize = '100px';
+            _timer.innerHTML = 'پایان بازی';
+
+            this._stopTime();
+          }
+        }, 1000);
+      },
+
+      _stopTime: function () {
+        this._log('_stopTime');
+        clearInterval(this._setInterval);
       },
 
       getRandom: function (min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
       },
 
-      moveObj: function () {
-        var x = getRandom(0, 600);
-        var y = getRandom(0, 500);
-        element.style.left = x + 'px';
-        element.style.top = y + 'px';
+      win: function () {
+        this._log('<%s> win', this.is);
+        this.score = this.score + 5
+        this.$.score.innerHTML = this.score;
       },
 
       move: function () {
         let x = this.getRandom(0, 1200);
         let y = this.getRandom(0, 700);
+        let rotateBall = this.getRandom(0, 720);
+
+        this._log('<%s> move x: %s, y: %s, rotateBall: %s', this.is, x, y, rotateBall);
+
+        this.$.circle.style.transform = 'rotate('+ rotateBall +'deg);'
         this.$.circle.style.left = x + 'px';
         this.$.circle.style.top = y + 'px';
       },
