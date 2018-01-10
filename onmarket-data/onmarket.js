@@ -35,8 +35,6 @@
     }
   ];
 
-  onmarket.cart = [],
-
   onmarket.product = [
     {
       productId: 1,
