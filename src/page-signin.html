@@ -1,0 +1,226 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
+<link rel="import" href="../bower_components/paper-styles/typography.html" />
+<link rel="import" href="../bower_components/paper-styles/color.html" />
+<link rel="import" href="../bower_components/paper-material/paper-material.html" />
+<link rel="import" href="../bower_components/paper-input/paper-input.html" />
+<link rel="import" href="../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html" />
+<link rel="import" href="../bower_components/iron-image/iron-image.html" />
+<link rel="import" href="../bower_components/iron-a11y-keys/iron-a11y-keys.html" />
+<link rel="import" href="../bower_components/paper-progress/paper-progress.html" />
+
+<link rel="import" href="onmarket-config.html" />
+
+<dom-module id="page-signin">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply --layout-fit;
+        position: fixed;
+        color: var(--app-primary-text-color);
+        z-index: 10;
+
+        background-color: var(--app-primary-background-color);
+        /* background-image: url('image/app-bg.png'); */
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus
+      input:-webkit-autofill {
+        -webkit-box-shadow: none;
+        /*https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/*/
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        background-position: left top;
+        background-repeat: repeat;
+        background-image: url('data:images/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD9JREFUeNpiZGJi4mXAA5gZGRnZ2djYJIWFhVV+//7N+Pfv3y/IfCaQKgEBAXFcNFjBhw8fXuKiGQeBGwACDADX/jYJqLIeywAAAABJRU5ErkJggg==');
+        @apply --layout-vertical;
+        @apply --layout-center-center;
+      }
+
+      .container paper-material {
+        width: 23em;
+        background-color: var(--app-primary-background-color);
+        border-radius: 5px;
+      }
+
+      .form-container {
+        padding: 1em 3em 1.5em;
+      }
+
+      .logo {
+        line-height: 1;
+        text-align: center;
+        padding-top: 0.5em;
+      }
+
+      .logo iron-image[disabled] {
+        opacity: 0.5;
+      }
+
+      paper-button {
+        @apply --paper-font-button;
+
+        margin-top: 30px;
+        /*border: 1px solid var(--app-primary-color);*/
+
+        --paper-button: {
+          color: var(--app-primary-light-text-color);
+          background-color: var(--app-primary-color);
+          padding: 0.55em 0.57em;
+          min-width: 5.5em;
+        }
+      }
+
+      paper-checkbox {
+        margin-top: 30px;
+        display: block;
+        --paper-checkbox-checked-color: var(--app-primary-color);
+        --paper-checkbox-checked-ink-color: var(--app-primary-color);
+        --paper-checkbox-unchecked-color: var(--app-secondary-text-color);
+        --paper-checkbox-unchecked-ink-color: var(--app-primary-color);
+        --paper-checkbox-label-color: var(--app-secondary-text-color);
+        --paper-checkbox-label-checked-color: var(--app-primary-text-color);
+      }
+
+      paper-input {
+        --paper-input-container-focus-color: var(--app-primary-color);
+      }
+
+      paper-progress {
+        display: block;
+        width: 100%;
+        --paper-progress-active-color: var(--app-secondary-color);
+        --paper-progress-container-color: transparent;
+        --paper-progress-indeterminate-cycle-duration: 1s;
+      }
+    </style>
+
+    <div class="container">
+      <paper-material elevation="2">
+        <paper-progress indeterminate="[[progress]]" fast></paper-progress>
+        <div class="form-container">
+          <div class="logo">
+            <!-- <iron-image id="logo"></iron-image> -->
+          </div>
+          <paper-input id="userInput" label="نام کاربری" type="text" value="{{_username}}" required autofocus></paper-input>
+          <paper-input id="passInput" label="کلمه عبور" type="password" value="{{_password}}" required></paper-input>
+          <paper-checkbox checked="{{_remember}}"> مرا به خاطر بسپار </paper-checkbox>
+          <div style="text-align: center;">
+            <paper-button on-tap="_signin" raised disabled$="[[progress]]">ورود</paper-button>
+          </div>
+        </div>
+      </paper-material>
+    </div>
+
+    <iron-a11y-keys id="a11yTabForUser" keys="tab" on-keys-pressed="_focusPassInput"></iron-a11y-keys>
+    <iron-a11y-keys id="a11yEnterForUser" keys="enter" on-keys-pressed="_focusPassInput"></iron-a11y-keys>
+    <iron-a11y-keys id="a11yEnterForPass" keys="enter" on-keys-pressed="_signin"></iron-a11y-keys>
+  </template>
+
+  <script type="text/javascript">
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'page-signin',
+
+        properties: {
+          _username: {
+            type: String,
+          },
+
+          _password: {
+            type: String,
+          },
+
+          _remember: {
+            type: Boolean,
+            value: true
+          },
+
+          progress: {
+            type: Boolean,
+            value: false
+          },
+
+          signin: {
+            type: Object,
+            value: function() {
+              try {
+                return onmarket.signin;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          }
+        },
+
+        attached: function () {
+          this.$.a11yTabForUser.target = this.$.userInput;
+          this.$.a11yEnterForUser.target = this.$.userInput;
+          this.$.a11yEnterForPass.target = this.$.passInput;
+
+          const remember = localStorage.getItem('signinRemember');
+          if (remember) {
+            this._remember = JSON.parse(remember);
+          }
+
+          // this._imageTapCount = 0;
+          // this.$.logo.src = this.resolveUrl('image/logo.png');
+        },
+
+        _focusPassInput: function () {
+          this._log('page-signin _focusPassInput');
+          this.async(() => {
+            if (this.$.userInput.validate()) {
+              this.$.passInput.inputElement.focus();
+              if (this.$.passInput.inputElement.inputElement) {
+                this.$.passInput.inputElement.inputElement.focus();
+              }
+            }
+            else {
+              this.$.userInput.inputElement.focus();
+              if (this.$.userInput.inputElement.inputElement) {
+                this.$.userInput.inputElement.inputElement.focus();
+              }
+            }
+          }, 100)
+        },
+
+        _signin: function () {
+          this._log('page-signin _signin');
+          if (this.progress) return;
+          let isValid = true;
+          Polymer.dom(this.root).querySelectorAll('paper-input').forEach((paperInput) => {
+            if (!paperInput.validate()) {
+              isValid = false;
+            }
+          });
+          if (isValid) {
+            if (this.signin) {
+              const __username = this.signin.username;
+              const __password = this.signin.password;
+
+              if (__username === this._username && __password === this._password) {
+                this._log('signin');
+                location.href = onmarket.menu[1].name;
+              }
+            }
+          }
+        },
+      });
+    })();
+
+  </script>
+</dom-module>

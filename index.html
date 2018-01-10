@@ -1,15 +1,5 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl" xmlns="http://www.w3.org/1999/xhtml" style="background-color: #eeeeee;">
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="Polymer Starter Kit">
@@ -74,9 +64,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       * path (e.g., with URLs like `my.domain/` and `my.domain/view1`).
       *
       * If you intend to serve your app from a non-root path (e.g., with URLs
-      * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
+      * like `my.domain/on-market/` and `my.domain/on-market/view1`), edit this line
       * to indicate the path from which you'll be serving, including leading
-      * and trailing slashes (e.g., `/my-app/`).
+      * and trailing slashes (e.g., `/on-market/`).
       */
       window.Polymer.rootPath = '/';
 
@@ -123,20 +113,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </script>
 
-    <link rel="import" href="src/my-app.html">
+    <link rel="import" href="src/onmarket-app.html">
 
-    <style>
+    <style type="text/css">
+      html {
+        overflow-y: scroll;
+      }
+
       body {
         margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
         background-color: #eeeeee;
+        font-family: 'Droid Arabic Naskh', 'Noto Naskh Arabic', 'Roboto', 'Noto', sans-serif;
+        min-height: 100vh;
+      }
+
+      /* https://css-tricks.com/custom-scrollbars-in-webkit/ */
+      ::-webkit-scrollbar {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar:vertical {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar:horizontal {
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #bdbdbd;
+        border-radius: 4px;
       }
     </style>
   </head>
   <body>
-    <my-app></my-app>
+    <onmarket-app></onmarket-app>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
