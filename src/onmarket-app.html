@@ -363,9 +363,9 @@
         },
 
         _addToCart: function (_, id) {
-          console.log('<%s> _addToCart id: %s', this.is, id);
+          this._log('<%s> _addToCart id: %s', this.is, id);
           this.cartContainer.push(id);
-          console.log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
+          this._log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
         },
       });
     })();
