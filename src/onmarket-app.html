@@ -262,7 +262,7 @@
             selected-attribute="actived"
             role="main">
           <page-product name="product"></page-product>
-          <page-cart name="cart"></page-cart>
+          <page-cart name="cart" cart-arr="[[cartContainer]]"></page-cart>
           <page-startgame name="startgame"></page-startgame>
           <page-game name="game"></page-game>
           <page-signin name="signin"></page-signin>
@@ -303,14 +303,7 @@
 
           cartContainer: {
             type: Array,
-            value: function () {
-              try {
-                return onmarket.cart;
-              }
-              catch (err) {
-                this._warn(err);
-              }
-            }
+            value: []
           }
         },
 
@@ -365,7 +358,7 @@
 
         _addToCart: function (_, id) {
           this._log('<%s> _addToCart id: %s', this.is, id);
-          this.cartContainer.push(id);
+          this.push('cartContainer', id);
           this._log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
         },
       });
