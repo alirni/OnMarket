@@ -14,11 +14,13 @@
     "src/page-signin.html",
     "src/page-startgame.html",
     "src/product-card-cart.html",
-    "src/product-card.html"
+    "src/product-card.html",
+    "bower_components/iron-flex-layout/iron-flex-layout.html"
   ],
   "sources": [
     "images/**/*",
-    "bower.json"
+    "bower.json",
+    "bower_components/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
