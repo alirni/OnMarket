@@ -1,33 +1,42 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/on-market.html",
+  "shell": "src/onmarket-app.html",
   "fragments": [
-    "src/my-view1.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
-    "src/my-view404.html"
+    "src/onmarket-config.html",
+    "src/onmarket-icon.html",
+    "src/onmarket-menu.html",
+    "src/onmarket-style.html",
+    "src/page-404.html",
+    "src/page-cart.html",
+    "src/page-detail.html",
+    "src/page-game.html",
+    "src/page-product.html",
+    "src/page-signin.html",
+    "src/page-startgame.html",
+    "src/product-card-cart.html",
+    "src/product-card.html"
   ],
   "sources": [
-    "src/**/*",
     "images/**/*",
     "bower.json"
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/*.js",
+    "bower_components/paper-styles/font/*"
   ],
   "lint": {
-    "rules": ["polymer-1"]
+    "rules": [
+      "polymer-2-hybrid"
+    ],
+    "ignoreWarnings": []
   },
   "builds": [
     {
-      "preset": "es5-bundled"
-    },
-    {
-      "preset": "es6-bundled"
-    },
-    {
-      "preset": "es6-unbundled"
+      "preset": "es6-unbundled",
+      "js": {
+        "minify": false
+      }
     }
   ]
 }
