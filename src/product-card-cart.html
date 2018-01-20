@@ -1,5 +1,4 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-material/paper-material.html" />
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
 <link rel="import" href="../bower_components/iron-image/iron-image.html" />
 <link rel="import" href="../bower_components/paper-button/paper-button.html" />
@@ -18,17 +17,12 @@
         user-select: none;
       }
 
-      paper-material {
-        background-color: var(--app-primary-background-color);
-        border-radius: 5px;
-        margin-bottom: 1em;
+      .container {
+        @apply --layout-horizontal;
+        border-bottom: solid 2px var(--app-secondary-background-color);
       }
 
-      .container {
-        @apply --layout-horizontal-reverse;
-      }
-/*
-      .container > * {
+      /* .container > * {
         outline: 1px solid green;
       }
 
@@ -41,7 +35,7 @@
       } */
 
       .info {
-        @apply --layout-horizontal-reverse;
+        @apply --layout-horizontal;
         @apply --layout-flex-auto;
         @apply --layout-around-justified;
       }
@@ -49,6 +43,7 @@
       .info-box {
         @apply --layout-horizontal;
         @apply --layout-center-center;
+        min-width: 5em;
       }
 
       iron-image {
@@ -57,18 +52,15 @@
       }
     </style>
 
-
-    <paper-material elevation="1">
-      <div class="container">
-        <iron-image src="[[productImagePath]]" sizing="contain"></iron-image>
-        <div class="info">
-          <div class="info-box product-name">[[productName]]a</div>
-          <div class="info-box product-price">[[productPrice]]b</div>
-          <div class="info-box product-count">[[productCount]]c</div>
-          <div class="info-box product-count-final">[[productCountFinal]]d</div>
-        </div>
+    <div class="container">
+      <iron-image src="../images/product/[[productImagePath]].png" sizing="contain"></iron-image>
+      <div class="info">
+        <div class="info-box product-name">[[productName]]</div>
+        <div class="info-box product-price">[[productPrice]]</div>
+        <div class="info-box product-count">[[productCount]]</div>
+        <div class="info-box product-count-final">[[productCountFinal]]</div>
       </div>
-    </paper-material>
+    </div>
 
   </template>
 
@@ -80,9 +72,25 @@
         is: 'product-card-cart',
 
         propertise: {
-          productArr: {
-            type: Array,
-          }
+          productImagePath: {
+            type: String,
+          },
+
+          productName: {
+            type: String,
+          },
+
+          productPrice: {
+            type: String,
+          },
+
+          productCount: {
+            type: String,
+          },
+
+          productCountFinal: {
+            type: String,
+          },
         },
       });
     })();
