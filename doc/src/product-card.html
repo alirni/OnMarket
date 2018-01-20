@@ -1,0 +1,33 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/paper-material/paper-material.html"><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="import" href="../bower_components/iron-image/iron-image.html"><link rel="import" href="../bower_components/paper-button/paper-button.html"><link rel="import" href="../bower_components/paper-styles/typography.html"><link rel="import" href="../bower_components/iron-icon/iron-icon.html"><link rel="import" href="onmarket-icon.html"></head><body><dom-module id="product-card"><template><style>:host{@apply --layout-vertical;margin:1em 0.5em;user-select:none;}paper-material{background-color:var(--app-primary-background-color);border-radius:5px;}.product-image,
+      iron-image{width:230px;height:230px;}.product-cart{@apply --layout-horizontal;@apply --layout-justified;padding:1em;margin-top:1em;}.product-price{@apply --paper-font-title;color:var(--app-primary-color);margin-top:0.2em;}.btn-container{@apply --layout-vertical;@apply --layout-center-center;}paper-button{border:1px solid var(--app-primary-color);--paper-button:{@apply --paper-font-button;color:var(--app-primary-text-color);};--paper-button-ink-color:var(--app-primary-color);}iron-icon{--iron-icon:{color:var(--app-primary-color);};}</style><paper-material elevation="1"><div class="product-image"><iron-image src="[[productImagePath]]" sizing="contain"></iron-image></div><div class="product-cart"><div class="product-des"><div class="product-name">[[productName]]</div><div class="product-price">[[productPrice]]</div></div><div class="btn-container"><paper-button on-tap="addToCart"><iron-icon icon="onmarket:cart"></iron-icon>خرید</paper-button></div></div></paper-material></template><script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'product-card',
+
+        propertise: {
+          productId: {
+            type: Number,
+          },
+
+          productName: {
+            type: String,
+          },
+
+          productPrice: {
+            type: String,
+          },
+
+          productImagePath: {
+            type: String,
+          },
+        },
+
+        addToCart: function() {
+          this._log('<%s> addToCart productId: ', this.is, this.productId);
+          this.fire('addToCart', this.productId);
+        }
+      });
+    })();
+  </script></dom-module></body></html>

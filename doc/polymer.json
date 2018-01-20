@@ -1,0 +1,73 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src\\onmarket-app.html",
+  "fragments": [
+    "src\\onmarket-config.html",
+    "src\\onmarket-icon.html",
+    "src\\onmarket-menu.html",
+    "src\\onmarket-style.html",
+    "src\\page-404.html",
+    "src\\page-cart.html",
+    "src\\page-detail.html",
+    "src\\page-game.html",
+    "src\\page-product.html",
+    "src\\page-signin.html",
+    "src\\page-startgame.html",
+    "src\\product-card-cart.html",
+    "src\\product-card.html"
+  ],
+  "sources": [
+    "images\\**\\*",
+    "bower.json",
+    "index.html",
+    "src\\onmarket-app.html",
+    "src\\onmarket-config.html",
+    "src\\onmarket-icon.html",
+    "src\\onmarket-menu.html",
+    "src\\onmarket-style.html",
+    "src\\page-404.html",
+    "src\\page-cart.html",
+    "src\\page-detail.html",
+    "src\\page-game.html",
+    "src\\page-product.html",
+    "src\\page-signin.html",
+    "src\\page-startgame.html",
+    "src\\product-card-cart.html",
+    "src\\product-card.html"
+  ],
+  "extraDependencies": [
+    "bower_components\\webcomponentsjs\\*.js",
+    "manifest.json",
+    "bower_components\\webcomponentsjs\\*.js",
+    "bower_components\\paper-styles\\font\\*"
+  ],
+  "builds": [
+    {
+      "name": "es6-unbundled",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": false,
+        "compile": false
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ],
+    "ignoreWarnings": []
+  }
+}

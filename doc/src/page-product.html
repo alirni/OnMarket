@@ -1,0 +1,24 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="import" href="product-card.html"><link rel="import" href="onmarket-config.html"></head><body><dom-module id="page-product"><template><style>:host{@apply --layout-vertical;padding:1em;}.container{@apply --layout-horizontal;@apply --layout-wrap;@apply --layout-around-justified;}</style><div class="container"><template is="dom-repeat" items="{{productArr}}" as="product"><product-card product-id="[[product.productId]]" product-name="[[product.name]]" product-price="[[product.price]]" product-image-path="../images/product/[[product.image]].png"></product-card></template></div></template><script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'page-product',
+
+        properties: {
+
+          productArr: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.product;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+        },
+      });
+    })();
+  </script></dom-module></body></html>

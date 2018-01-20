@@ -1,0 +1,31 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="import" href="../bower_components/iron-image/iron-image.html"><link rel="import" href="../bower_components/paper-button/paper-button.html"><link rel="import" href="../bower_components/paper-styles/typography.html"><link rel="import" href="../bower_components/iron-icon/iron-icon.html"><link rel="import" href="onmarket-icon.html"><link rel="import" href="onmarket-style.html"></head><body><dom-module id="product-card-cart"><template><style>:host{@apply --layout-vertical;user-select:none;}.container{@apply --layout-horizontal;border-bottom:solid 2px var(--app-secondary-background-color);}.info{@apply --layout-horizontal;@apply --layout-flex-auto;@apply --layout-around-justified;}.info-box{@apply --layout-horizontal;@apply --layout-center-center;min-width:5em;}iron-image{width:150px;height:150px;}</style><div class="container"><iron-image src="../images/product/[[productImagePath]].png" sizing="contain"></iron-image><div class="info"><div class="info-box product-name">[[productName]]</div><div class="info-box product-price">[[productPrice]]</div><div class="info-box product-count">[[productCount]]</div><div class="info-box product-count-final">[[productCountFinal]]</div></div></div></template><script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'product-card-cart',
+
+        propertise: {
+          productImagePath: {
+            type: String,
+          },
+
+          productName: {
+            type: String,
+          },
+
+          productPrice: {
+            type: String,
+          },
+
+          productCount: {
+            type: String,
+          },
+
+          productCountFinal: {
+            type: String,
+          },
+        },
+      });
+    })();
+  </script></dom-module></body></html>

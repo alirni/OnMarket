@@ -1,0 +1,130 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html"><link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html"><link rel="import" href="../bower_components/app-layout/app-header/app-header.html"><link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html"><link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html"><link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html"><link rel="import" href="../bower_components/app-route/app-location.html"><link rel="import" href="../bower_components/app-route/app-route.html"><link rel="import" href="../bower_components/iron-pages/iron-pages.html"><link rel="import" href="../bower_components/iron-selector/iron-selector.html"><link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html"><link rel="import" href="onmarket-config.html"><link rel="import" href="onmarket-icon.html"><link rel="import" href="page-cart.html"><link rel="import" href="page-startgame.html"><link rel="import" href="page-game.html"><link rel="import" href="page-signin.html"><link rel="import" href="page-product.html"><link rel="import" href="page-404.html"><link rel="import" href="onmarket-style.html"><link rel="import" href="onmarket-menu.html"></head><body><dom-module id="onmarket-app"><template><style include="onmarket-style">:host{display:block;@apply --paper-font-common-base;color:var(--app-primary-text-color);--app-drawer-width:13.75em;}app-drawer-layout{min-height:100vh;}app-header{color:var(--app-primary-light-text-color);background-color:var(--app-primary-color);}:host([page="signin"]) app-header,
+      :host([page="signin"]) app-drawer{opacity:0;pointer-events:none;}app-toolbar{@apply --layout-horizontal-reverse;}app-toolbar [main-title]{@apply --layout-horizontal;@apply --paper-font-subhead;@apply --paper-font-common-nowrap;font-weight:500;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}app-toolbar paper-icon-button{--paper-icon-button:{color:var(--app-primary-light-text-color);};}app-toolbar [main-title] a{display:block;max-width:15em;overflow:hidden;text-overflow:ellipsis;color:inherit;text-decoration:none;pointer-events:auto;cursor:default;}app-toolbar [main-title] a[href]{cursor:pointer;margin-left:0.125em;}app-toolbar [main-title] a[href]:after{content:' >';}box-icon-button{--box-icon-button-color:var(--app-primary-light-text-color);}app-drawer{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;--app-drawer-content-container:{@apply --layout-vertical;background-image:url("../images/drawer.jpg");background-position:center bottom;background-repeat:no-repeat;background-size:cover;};}.drawer-header{@apply --layout-horizontal;@apply --layout-center;box-sizing:border-box;min-height:5.5em;}.drawer-header .logo{border-radius:50%;width:60px;height:60px;background-image:url("../images/avatar_placeholder.png");background-repeat:no-repeat;background-size:cover;margin:0 0.875em;}.drawer-header .company-container{@apply --layout-flex-2;margin-left:0.875em;color:var(--app-primary-text-color);@apply --paper-font-menu;}.separatore{margin:0 0.875em;height:1px;background-color:var(--app-menu-separatorline-color);}.drawer-footer{padding:1em 0.25em;}.drawer-list{display:block;@apply --layout-flex-2;overflow-y:auto;padding-top:0.5em;}.drawer-list::-webkit-scrollbar-thumb{background-color:transparent;}.drawer-list:hover::-webkit-scrollbar-thumb{background-color:var(--paper-grey-400);}paper-progress{display:block;width:100%;--paper-progress-active-color:var(--app-secondary-color);--paper-progress-container-color:transparent;}#toast{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;direction:rtl;white-space:nowrap;}#toast a{font-weight:600;text-decoration:none;margin-right:1em;color:var(--app-primary-color);cursor:pointer;}app-drawer-layout:not([narrow]) [drawer-toggle]{display:none;}#imageDialog{border-radius:5px;}#imageDialog iron-image{display:block;padding:0;margin:0.75em;--iron-image-height:80vh;border-radius:5px;}a:focus{outline:0 none;}paper-tooltip,
+      paper-dialog{display:none;}:host([lazy-loaded]) paper-tooltip,
+      :host([lazy-loaded]) paper-dialog{display:block;}paper-listbox{border-bottom:1px solid var(--app-menu-separatorline-color);}paper-listbox paper-icon-item{--paper-icon-item:{@apply --paper-font-menu;color:var(--app-primary-icon-color);};}</style><app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location><app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route><app-drawer-layout responsive-width="1000px" fullbleed="" narrow="{{narrow}}"><app-drawer slot="drawer" align="start" id="drawer" swipe-open="[[narrow]]"><app-toolbar>profile</app-toolbar><onmarket-menu root-path="[[rootPath]]"></onmarket-menu></app-drawer><app-header-layout has-scrolling-region=""><app-header fixed="" effects="waterfall"><app-toolbar><paper-icon-button icon="onmarket:menu" drawer-toggle=""></paper-icon-button><div main-title="">آن مارکت</div></app-toolbar></app-header><iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="404" selected-attribute="actived" role="main"><page-product name="product"></page-product><page-cart name="cart" cart-arr="[[cartContainer]]"></page-cart><page-startgame name="startgame"></page-startgame><page-game name="game"></page-game><page-signin name="signin"></page-signin><page-404 name="404"></page-404></iron-pages></app-header-layout></app-drawer-layout></template><script>
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'onmarket-app',
+
+        properties: {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+
+          homePage: {
+            type: String,
+            value: function () {
+              try {
+                return onmarket.menu[0].name;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+
+          productArr: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.product;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+
+          rootPath: {
+            type: String,
+          },
+
+          cartContainer: {
+            type: Array,
+            value: []
+          }
+        },
+
+        listeners: {
+          'addToCart': '_addToCart'
+        },
+
+        observers: [
+          // '_routePageChanged(routeData.page)',
+          '_routeChanged(route.path)'
+        ],
+
+        // _routePageChanged: function(page) {
+        //   this.page = page || 'cart';
+
+        //   if (!this.$.drawer.persistent) {
+        //     this.$.drawer.close();
+        //   }
+        // },
+
+        _routeChanged: function (path) {
+          this.debounce('_routeChanged', () => {
+            // use debounce to prevent duplicate call and ensure to routeData is updated.
+            if (path.substr(-1) != '/') {
+              // routeData.page not valid
+              this.set('route.path', path + '/');
+            }
+            else if (path === '/') {
+              // routeData not valid
+              this.menu = this.page = this.homePage;
+            }
+            else {
+              this.menu = this.routeData.menu || this.homePage;
+              this.page = this.routeData.page || this.menu;
+            }
+
+            if (!this.$.drawer.persistent && this.$.drawer.opened) {
+              this.$.drawer.opened = false;
+            }
+          }, 10);
+        },
+
+        _pageChanged: function (page) {
+          // Load page import on demand. Show 404 page if fails
+          var resolvedPageUrl = this.resolveUrl('page-' + page + '.html');
+          this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        },
+
+        _showPage404: function () {
+          this.page = '404';
+        },
+
+        _addToCart: function (_, id) {
+          this._log('<%s> _addToCart id: %s', this.is, id);
+          let product, _count = 1;
+          let container;
+
+          for (product of this.productArr) {
+            // this._log('_addToCart product: %o', product);
+            if (product.productId === id) {
+              container = Object.assign({}, product, {
+                count: _count,
+                countFinal: product.price
+              });
+              // container = {
+              //   productId: product.productId,
+              //   image: product.image,
+              //   name: product.name,
+              //   price: product.price,
+              //   count: _count,
+              //   countFinal: product.price,
+              // }
+              this.push('cartContainer', container);
+            }
+            else {
+              // this._warn('_addToCart productId: %s and id %s', product.productId, id);
+            }
+          }
+          this._log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
+        },
+      });
+    })();
+  </script></dom-module></body></html>
