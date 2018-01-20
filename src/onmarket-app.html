@@ -259,9 +259,10 @@
             selected="[[page]]"
             attr-for-selected="name"
             fallback-selection="404"
+            selected-attribute="actived"
             role="main">
           <page-product name="product"></page-product>
-          <page-cart name="cart"></page-cart>
+          <page-cart name="cart" cart-arr="[[cartContainer]]"></page-cart>
           <page-startgame name="startgame"></page-startgame>
           <page-game name="game"></page-game>
           <page-signin name="signin"></page-signin>
@@ -296,20 +297,25 @@
             }
           },
 
+          productArr: {
+            type: Array,
+            value: function () {
+              try {
+                return onmarket.product;
+              }
+              catch (err) {
+                this._warn(err);
+              }
+            }
+          },
+
           rootPath: {
             type: String,
           },
 
           cartContainer: {
             type: Array,
-            value: function () {
-              try {
-                return onmarket.cart;
-              }
-              catch (err) {
-                this._warn(err);
-              }
-            }
+            value: []
           }
         },
 
@@ -364,7 +370,30 @@
 
         _addToCart: function (_, id) {
           this._log('<%s> _addToCart id: %s', this.is, id);
-          this.cartContainer.push(id);
+          let product, _count = 1;
+          let container;
+
+          for (product of this.productArr) {
+            // this._log('_addToCart product: %o', product);
+            if (product.productId === id) {
+              container = Object.assign({}, product, {
+                count: _count,
+                countFinal: product.price
+              });
+              // container = {
+              //   productId: product.productId,
+              //   image: product.image,
+              //   name: product.name,
+              //   price: product.price,
+              //   count: _count,
+              //   countFinal: product.price,
+              // }
+              this.push('cartContainer', container);
+            }
+            else {
+              // this._warn('_addToCart productId: %s and id %s', product.productId, id);
+            }
+          }
           this._log('<%s> _addToCart cartContainer: %o', this.is, this.cartContainer);
         },
       });

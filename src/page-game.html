@@ -55,7 +55,7 @@
     <paper-material elevation="1">
       <div class="container">
         <div class="score">امتیاز: <span id="score"></span></div>
-        <div id="time">01:00</div>
+        <div id="time"></div>
       </div>
       <div class="circle" id="circle" on-mousemove="move" on-tap="win"></div>
     </paper-material>
@@ -71,22 +71,25 @@
           type: Number,
         },
 
-        startTime: {
+        actived: {
           type: Boolean,
+          value: false,
+          observer: 'pageActived'
         }
       },
 
-      observers: [
-        '_startGame(startTime)'
-      ],
-
-      ready: function () {
-        this.score = 0;
+      pageActived: function (actived) {
+        if (actived) {
+          this.score = 0;
+          this.$.score.innerHTML = this.score;
+          this._startGame();
+        }
       },
 
       _startGame: function () {
         const _timer = this.$.time;
         let time = 9;
+        _timer.innerHTML = '00:' + time;
         this._setInterval = setInterval(() => {
           if (time != 0) {
             // this._log('time: %s', time);
@@ -95,7 +98,6 @@
           else {
             _timer.style.fontSize = '100px';
             _timer.innerHTML = 'پایان بازی';
-
             this._stopTime();
           }
         }, 1000);

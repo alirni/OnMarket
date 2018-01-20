@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
 <link rel="import" href="../bower_components/paper-button/paper-button.html" />
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html" />
+<link rel="import" href="../bower_components/paper-material/paper-material.html" />
 
 <link rel="import" href="product-card-cart.html" />
 <link rel="import" href="onmarket-style.html" />
@@ -13,6 +14,12 @@
       :host {
         @apply --layout-vertical;
         padding: 1em;
+      }
+
+      paper-material {
+        background-color: var(--app-primary-background-color);
+        border-radius: 5px;
+        margin-bottom: 1em;
       }
 
       paper-button {
@@ -29,11 +36,52 @@
           color: var(--app-primary-light-text-color);
         };
       }
+
+      .container {
+        @apply --layout-horizontal;
+        padding: 1em 0;
+        border-bottom: solid 2px var(--app-secondary-background-color);
+        /* background-color: var(--app-secondary-background-color); */
+      }
+
+      .info {
+        @apply --layout-horizontal;
+        @apply --layout-flex-auto;
+        @apply --layout-around-justified;
+      }
+
+      .info-box {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+        min-width: 5em;
+      }
+
+      .image {
+        width: 150px;
+        text-align: center;
+      }
     </style>
 
-    <template is="dom-repeat" items={{cartArr}} as=product index-as=index>
-      <product-card-cart product-arr=[[cartArr]]></product-card-cart>
-    </template>
+    <paper-material elevation="1">
+      <div class="container">
+        <div class="image">تصویر کالا</div>
+        <div class="info">
+          <div class="info-box product-name">نام</div>
+          <div class="info-box product-price">قیمت</div>
+          <div class="info-box product-count">تعداد</div>
+          <div class="info-box product-count-final">قیمت نهایی</div>
+        </div>
+      </div>
+      <template is="dom-repeat" items={{cartArr}} as=product index-as=index>
+        <product-card-cart
+          product-image-path="[[product.image]]"
+          product-name="[[product.name]]"
+          product-price="[[product.price]]"
+          product-count="[[product.count]]"
+          product-count-final="[[product.countFinal]]">
+        </product-card-cart>
+      </template>
+    </paper-material>
 
     <div class="btn-container">
       <paper-button on-tap="">
@@ -53,14 +101,6 @@
         properties: {
           cartArr: {
             type: Array,
-            value: function () {
-              try {
-                return onmarket.cart;
-              }
-              catch (err) {
-                this._warn(err);
-              }
-            },
           }
         },
 
