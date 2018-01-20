@@ -1,76 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-material/paper-material.html" />
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
-<link rel="import" href="../bower_components/paper-button/paper-button.html" />
-
-<link rel="import" href="onmarket-style.html" />
-
-<dom-module id="page-startgame">
-  <template>
-    <style>
-      :host {
-        @apply --layout-vertical;
-      }
-
-      paper-material {
-        background-color: var(--app-primary-background-color);
-        border-radius: 5px;
-        padding: 1em;
-        margin: 2em;
-      }
-
-      paper-button {
-        --paper-button: {
-          background-color: var(--app-primary-color);
-          color: var(--app-primary-light-text-color);
-        }
-      }
-
-      .rols {
-        margin-top: .8125em;
-      }
-
-      .rols h6 {
-        margin: 0;
-        padding: 0;
-        margin-bottom: .5em;
-        @apply --paper-font-subhead;
-      }
-
-      .rols ol {
-        margin: 0;
-        padding: 0;
-        @apply --paper-font-body1;
-        margin-right: 2.5em;
-      }
-
-      .rols li {
-        color: var(--app-primary-color);
-        margin: .8125em 0;
-      }
-
-      .rols li span {
-        color: var(--app-primary-text-color);
-      }
-    </style>
-
-    <paper-material elevation="1">
-      <div class="container">
-        <div class="rols">
-          <ul>
-            <li><span>مدت زمان بازی 60 ثانیه است.</span></li>
-            <li><span>هر بار که بازیکن توپ را بگیرد 5 امتیاز میگیرد.</span></li>
-          </ul>
-        </div>
-        <div class="btn-container">
-          <paper-button on-tap="startGame" raised>شروع</paper-button>
-        </div>
-      </div>
-    </paper-material>
-    <a id="startGame" hidden></a>
-  </template>
-
-  <script>
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/paper-material/paper-material.html"><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="import" href="../bower_components/paper-button/paper-button.html"><link rel="import" href="onmarket-style.html"></head><body><dom-module id="page-startgame"><template><style>:host{@apply --layout-vertical;}paper-material{background-color:var(--app-primary-background-color);border-radius:5px;padding:1em;margin:2em;}paper-button{--paper-button:{background-color:var(--app-primary-color);color:var(--app-primary-light-text-color);};}.rols{margin-top:.8125em;}.rols h6{margin:0;padding:0;margin-bottom:.5em;@apply --paper-font-subhead;}.rols ol{margin:0;padding:0;@apply --paper-font-body1;margin-right:2.5em;}.rols li{color:var(--app-primary-color);margin:.8125em 0;}.rols li span{color:var(--app-primary-text-color);}</style><paper-material elevation="1"><div class="container"><div class="rols"><ul><li><span>مدت زمان بازی 60 ثانیه است.</span></li><li><span>هر بار که بازیکن توپ را بگیرد 5 امتیاز میگیرد.</span></li></ul></div><div class="btn-container"><paper-button on-tap="startGame" raised="">شروع</paper-button></div></div></paper-material><a id="startGame" hidden=""></a></template><script>
     Polymer({
       is: 'page-startgame',
 
@@ -87,5 +15,4 @@
         this.$.startGame.click();
       }
     });
-  </script>
-</dom-module>
+  </script></dom-module></body></html>

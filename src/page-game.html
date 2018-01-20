@@ -1,68 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-material/paper-material.html" />
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html" />
-<link rel="import" href="../bower_components/paper-styles/typography.html" />
-
-<link rel="import" href="onmarket-style.html" />
-
-<dom-module id="page-game">
-  <template>
-    <style>
-      :host {
-        @apply --layout-horizontal;
-      }
-
-      paper-material {
-        @apply --layout-fit;
-        background-color: var(--app-primary-background-color);
-        border-radius: 5px;
-        padding: 1em;
-        margin: 2em;
-      }
-
-      .circle {
-        background-image: url('../images/ball.png');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 80px;
-        height: 80px;
-        border-radius: 40px;
-        background-color: var(--app-game-circle);
-        @apply --shadow-elevation-4dp;
-        position: absolute;
-        transition: all 700ms;
-      }
-
-      .container {
-        @apply --layout-horizontal;
-        @apply --layout-justified;
-      }
-
-      .score {
-        @apply --paper-font-display1;
-        color: var(--app-time-game);
-        user-select: none;
-      }
-
-      #time {
-        @apply --paper-font-display4;
-        color: var(--app-time-game);
-        user-select: none;
-      }
-    </style>
-
-    <paper-material elevation="1">
-      <div class="container">
-        <div class="score">امتیاز: <span id="score"></span></div>
-        <div id="time"></div>
-      </div>
-      <div class="circle" id="circle" on-mousemove="move" on-tap="win"></div>
-    </paper-material>
-
-  </template>
-
-  <script>
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html"><link rel="import" href="../bower_components/paper-material/paper-material.html"><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="import" href="../bower_components/paper-styles/typography.html"><link rel="import" href="onmarket-style.html"></head><body><dom-module id="page-game"><template><style>:host{@apply --layout-horizontal;}paper-material{@apply --layout-fit;background-color:var(--app-primary-background-color);border-radius:5px;padding:1em;margin:2em;}.circle{background-image:url('../images/ball.png');background-position:center center;background-repeat:no-repeat;background-size:cover;width:80px;height:80px;border-radius:40px;background-color:var(--app-game-circle);@apply --shadow-elevation-4dp;position:absolute;transition:all 700ms;}.container{@apply --layout-horizontal;@apply --layout-justified;}.score{@apply --paper-font-display1;color:var(--app-time-game);user-select:none;}#time{@apply --paper-font-display4;color:var(--app-time-game);user-select:none;}</style><paper-material elevation="1"><div class="container"><div class="score">امتیاز: <span id="score"></span></div><div id="time"></div></div><div class="circle" id="circle" on-mousemove="move" on-tap="win"></div></paper-material></template><script>
     Polymer({
       is: 'page-game',
 
@@ -130,5 +66,4 @@
         this.$.circle.style.top = y + 'px';
       },
     });
-  </script>
-</dom-module>
+  </script></dom-module></body></html>
