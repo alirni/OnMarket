@@ -35,10 +35,23 @@
   },
   "builds": [
     {
-      "preset": "es6-unbundled",
+      "name": "es6-unbundled",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
       "js": {
-        "minify": false
-      }
+        "minify": false,
+        "compile": false
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "addServiceWorker": true,
+      "preset": "es6-unbundled"
     }
   ]
 }
