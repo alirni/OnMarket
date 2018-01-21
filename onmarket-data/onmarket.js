@@ -10,6 +10,12 @@
 
   onmarket.menu = [
     {
+      "name": "signin",
+      "href": "signin",
+      "icon": "signin",
+      "title": "خروج"
+    },
+    {
       "name": "product",
       "href": "product",
       "icon": "product",
@@ -26,12 +32,6 @@
       "href": "startgame",
       "icon": "game",
       "title": "بازی"
-    },
-    {
-      "name": "signin",
-      "href": "signin",
-      "icon": "signin",
-      "title": "خروج"
     }
   ];
 
