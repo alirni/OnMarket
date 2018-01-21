@@ -2,21 +2,21 @@
 <html lang="fa" dir="rtl" xmlns="http://www.w3.org/1999/xhtml" style="background-color: #eeeeee;">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=0.8, initial-scale=0.8, user-scalable=yes" />
-    <base href="/" />
+    <meta name="generator" content="Polymer Starter Kit" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
 
-    <title>..:: Loading ::..</title>
-    <meta name="description" content="onmarket app" />
+    <title>onmarket</title>
+    <meta name="description" content="onmarket" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--     <base href="/"> -->
 
-    <link rel="shortcut icon" href="image/favicon.ico" />
+    <link rel="icon" href="images/favicon.ico" />
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json" />
 
     <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#2196f3" />
+    <meta name="theme-color" content="#3f51b5" />
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes" />
@@ -36,8 +36,62 @@
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png" />
-    <meta name="msapplication-TileColor" content="#44444b" />
+    <meta name="msapplication-TileColor" content="#3f51b5" />
     <meta name="msapplication-tap-highlight" content="no" />
+
+    <script>
+      // Setup Polymer options
+      window.Polymer = {
+        dom: 'shadow',
+        lazyRegister: true,
+      };
+
+//       window.Polymer.rootPath = '/';
+
+      // Load webcomponentsjs polyfill if browser does not support native
+      // Web Components
+      (function() {
+        'use strict';
+
+        var onload = function() {
+          // For native Imports, manually fire WebComponentsReady so user code
+          // can use the same code path for native and polyfill'd imports.
+          if (!window.HTMLImports) {
+            document.dispatchEvent(
+              new CustomEvent('WebComponentsReady', {bubbles: true})
+            );
+          }
+        };
+
+        var webComponentsSupported = (
+          'registerElement' in document
+          && 'import' in document.createElement('link')
+          && 'content' in document.createElement('template')
+        );
+
+        if (!webComponentsSupported) {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src =
+            'bower_components/webcomponentsjs/webcomponents-lite.min.js';
+          script.onload = onload;
+          document.head.appendChild(script);
+        } else {
+          onload();
+        }
+      })();
+
+      // Load pre-caching Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: Polymer.rootPath,
+          });
+        });
+      }
+    </script>
+
+    <link rel="import" href="src/onmarket-app.html" />
 
     <style type="text/css">
       html {
@@ -49,23 +103,30 @@
         background-color: #eeeeee;
         font-family: 'Droid Arabic Naskh', 'Noto Naskh Arabic', 'Roboto', 'Noto', sans-serif;
         min-height: 100vh;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        color: #383838;
+      }
+
+      ::-webkit-scrollbar {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar:vertical {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar:horizontal {
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #bdbdbd;
+        border-radius: 4px;
       }
     </style>
   </head>
   <body>
     <onmarket-app></onmarket-app>
-
-    <script type="text/javascript">
-      // Setup Polymer options
-      window.Polymer = {
-        rootPath: '/',
-        // dom: 'shady',
-        // lazyRegister: true,
-      };
-    </script>
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="src/onmarket-app.html" />
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
   </body>
 </html>
