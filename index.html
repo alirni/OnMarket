@@ -1,119 +1,43 @@
 <!doctype html>
 <html lang="fa" dir="rtl" xmlns="http://www.w3.org/1999/xhtml" style="background-color: #eeeeee;">
   <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="Polymer Starter Kit">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=0.8, initial-scale=0.8, user-scalable=yes" />
+    <base href="/" />
 
-    <title>My App</title>
-    <meta name="description" content="My App description">
+    <title>..:: Loading ::..</title>
+    <meta name="description" content="onmarket app" />
 
-    <!--
-      The `<base>` tag below is present to support two advanced deployment options:
-      1) Differential serving. 2) Serving from a non-root path.
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-      Instead of manually editing the `<base>` tag yourself, you should generally either:
-      a) Add a `basePath` property to the build configuration in your `polymer.json`.
-      b) Use the `--base-path` command-line option for `polymer build`.
-
-      Note: If you intend to serve from a non-root path, see [polymer-root-path] below.
-    -->
-<!--     <base href="/"> -->
-
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="image/favicon.ico" />
 
     <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
 
     <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
+    <meta name="theme-color" content="#2196f3" />
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="onmarket" />
 
     <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="onmarket" />
 
     <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png" />
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <script>
-      // Setup Polymer options
-      window.Polymer = {
-        dom: 'shadow',
-        lazyRegister: true,
-      };
-
-      /**
-      * [polymer-root-path]
-      *
-      * By default, we set `Polymer.rootPath` to the server root path (`/`).
-      * Leave this line unchanged if you intend to serve your app from the root
-      * path (e.g., with URLs like `my.domain/` and `my.domain/view1`).
-      *
-      * If you intend to serve your app from a non-root path (e.g., with URLs
-      * like `my.domain/on-market/` and `my.domain/on-market/view1`), edit this line
-      * to indicate the path from which you'll be serving, including leading
-      * and trailing slashes (e.g., `/on-market/`).
-      */
-//       window.Polymer.rootPath = '/';
-
-      // Load webcomponentsjs polyfill if browser does not support native
-      // Web Components
-      (function() {
-        'use strict';
-
-        var onload = function() {
-          // For native Imports, manually fire WebComponentsReady so user code
-          // can use the same code path for native and polyfill'd imports.
-          if (!window.HTMLImports) {
-            document.dispatchEvent(
-              new CustomEvent('WebComponentsReady', {bubbles: true})
-            );
-          }
-        };
-
-        var webComponentsSupported = (
-          'registerElement' in document
-          && 'import' in document.createElement('link')
-          && 'content' in document.createElement('template')
-        );
-
-        if (!webComponentsSupported) {
-          var script = document.createElement('script');
-          script.async = true;
-          script.src =
-            'bower_components/webcomponentsjs/webcomponents-lite.min.js';
-          script.onload = onload;
-          document.head.appendChild(script);
-        } else {
-          onload();
-        }
-      })();
-
-      // Load pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js', {
-            scope: Polymer.rootPath,
-          });
-        });
-      }
-    </script>
-
-    <link rel="import" href="src/onmarket-app.html">
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#44444b" />
+    <meta name="msapplication-tap-highlight" content="no" />
 
     <style type="text/css">
       html {
@@ -125,32 +49,23 @@
         background-color: #eeeeee;
         font-family: 'Droid Arabic Naskh', 'Noto Naskh Arabic', 'Roboto', 'Noto', sans-serif;
         min-height: 100vh;
-      }
-
-      /* https://css-tricks.com/custom-scrollbars-in-webkit/ */
-      ::-webkit-scrollbar {
-        background: transparent;
-      }
-
-      ::-webkit-scrollbar:vertical {
-        width: 6px;
-      }
-
-      ::-webkit-scrollbar:horizontal {
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: #bdbdbd;
-        border-radius: 4px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        color: #383838;
       }
     </style>
   </head>
   <body>
     <onmarket-app></onmarket-app>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-    <!-- Built with love using Polymer Starter Kit -->
+
+    <script type="text/javascript">
+      // Setup Polymer options
+      window.Polymer = {
+        rootPath: '/',
+        // dom: 'shady',
+        // lazyRegister: true,
+      };
+    </script>
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="src/onmarket-app.html" />
   </body>
 </html>
