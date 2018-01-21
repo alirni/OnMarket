@@ -14,13 +14,11 @@
     "src/page-signin.html",
     "src/page-startgame.html",
     "src/product-card-cart.html",
-    "src/product-card.html",
-    "bower_components/iron-flex-layout/iron-flex-layout.html"
+    "src/product-card.html"
   ],
   "sources": [
     "images/**/*",
-    "bower.json",
-    "bower_components/**/*"
+    "bower.json"
   ],
   "extraDependencies": [
     "manifest.json",
@@ -45,10 +43,10 @@
         "compile": false
       },
       "css": {
-        "minify": true
+        "minify": false
       },
       "html": {
-        "minify": true
+        "minify": false
       },
       "addServiceWorker": true,
       "preset": "es6-unbundled"
